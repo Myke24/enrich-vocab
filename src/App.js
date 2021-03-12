@@ -8,6 +8,7 @@ function App() {
 	const [mainWord, setMainWord] = useState('');
 	const [synonyms, setSynonyms] = useState(null);
 	const [antonyms, setAntonyms] = useState(null);
+	const [funds, setFunds] = useState(0);
 
 	useEffect(() => {
 		const randomWrd = () => words[Math.floor(Math.random() * words.length)];
@@ -26,11 +27,21 @@ function App() {
 			.catch(console.error);
 	}, []);
 
+	const calFunds = (calculate) => {
+		if (calculate === 'correct') {
+			setFunds(funds + 100);
+		} else if (calculate === 'wrong') {
+			setFunds(funds - 100);
+		} else {
+			setFunds(funds - 50);
+		}
+	};
+
 	return (
 		<div className='App'>
 			<header className='App-header'>
 				Welcome to Enrich-Vocab!
-				<Funds />
+				<Funds funds={funds} />
 				<h1>{mainWord ? mainWord[0].meta.id : null}</h1>
 				<h3>{mainWord ? mainWord[0].shortdef[0] : null}</h3>
 			</header>
@@ -41,6 +52,7 @@ function App() {
 						ants={antonyms}
 						otherWrds={words}
 						mainWord={mainWord[0].meta.id}
+						calFunds={calFunds}
 					/>
 				) : null}
 			</div>

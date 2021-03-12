@@ -1,7 +1,11 @@
 import React from 'react';
 
-const CorrectBill = ({ syn }) => {
-	return <h3 style={{ color: 'green' }}>{syn}</h3>;
+const CorrectBill = ({ syn, calFunds }) => {
+	return (
+		<h3 onClick={() => calFunds('correct')} style={{ color: 'green' }}>
+			{syn}
+		</h3>
+	);
 };
 
 export default CorrectBill;

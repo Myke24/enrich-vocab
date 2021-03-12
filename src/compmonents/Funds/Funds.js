@@ -1,10 +1,10 @@
 import React from 'react';
 
-const Funds = () => {
+const Funds = ({ funds }) => {
 	return (
 		<div>
 			<h1>Funds</h1>
-			<p>$0</p>
+			<p>${funds}</p>
 		</div>
 	);
 };
