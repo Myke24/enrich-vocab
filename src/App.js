@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import words from './words.json';
+import Funds from './compmonents/Funds/Funds';
 import Bills from './compmonents/Bills/Bills';
 
 function App() {
@@ -19,8 +20,6 @@ function App() {
 			.then((res) => res.json())
 			.then((word) => {
 				setMainWord(word);
-				console.log(word);
-
 				setSynonyms(word[0].meta.syns[0]);
 				setAntonyms(word[0].meta.ants[0]);
 			})
@@ -28,18 +27,24 @@ function App() {
 	}, []);
 
 	return (
-		<>
-			<div className='App'>
-				<header className='App-header'>Welcome to Enrich-Vocab!</header>
-			</div>
-			<h1>{mainWord ? mainWord[0].meta.id : null}</h1>
-			<h3>{mainWord ? mainWord[0].shortdef : null}</h3>
+		<div className='App'>
+			<header className='App-header'>
+				Welcome to Enrich-Vocab!
+				<Funds />
+				<h1>{mainWord ? mainWord[0].meta.id : null}</h1>
+				<h3>{mainWord ? mainWord[0].shortdef[0] : null}</h3>
+			</header>
 			<div>
 				{synonyms && antonyms ? (
-					<Bills syns={synonyms} ants={antonyms} />
+					<Bills
+						syns={synonyms}
+						ants={antonyms}
+						otherWrds={words}
+						mainWord={mainWord[0].meta.id}
+					/>
 				) : null}
 			</div>
-		</>
+		</div>
 	);
 }
 
