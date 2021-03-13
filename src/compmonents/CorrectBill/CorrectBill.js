@@ -16,7 +16,13 @@ const CorrectBill = ({ syn, calFunds }) => {
 				<h3 onClick={() => handleClick()} style={{ color: 'green' }}>
 					{syn}, {wrongTimes}
 				</h3>
-			) : null}
+			) : (
+				<h3
+					onClick={() => handleClick()}
+					style={{ color: 'green', display: 'none' }}>
+					{syn}, {wrongTimes}
+				</h3>
+			)}
 		</div>
 	);
 };

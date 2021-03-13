@@ -58,7 +58,9 @@ function App() {
 						mainWord={mainWord[0].meta.id}
 						calFunds={calFunds}
 					/>
-				) : null}
+				) : (
+					<h1>...LOADING</h1>
+				)}
 			</div>
 		</div>
 	);

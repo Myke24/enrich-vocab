@@ -15,7 +15,14 @@ const WrongBill = ({ ant, calFunds }) => {
 				<h3 id={ant} onClick={() => handleClick()} style={{ color: 'red' }}>
 					{ant}, {wrongTimes}
 				</h3>
-			) : null}
+			) : (
+				<h3
+					id={ant}
+					onClick={() => handleClick()}
+					style={{ color: 'red', display: 'none' }}>
+					{ant}, {wrongTimes}
+				</h3>
+			)}
 		</div>
 	);
 };

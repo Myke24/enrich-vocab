@@ -15,7 +15,11 @@ const OtherBill = ({ wrd, calFunds }) => {
 				<h3 onClick={() => handleClick()}>
 					{wrd}, {wrongTimes}
 				</h3>
-			) : null}
+			) : (
+				<h3 onClick={() => handleClick()} style={{ display: 'none' }}>
+					{wrd}, {wrongTimes}
+				</h3>
+			)}
 		</div>
 	);
 };
