@@ -1,7 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const OtherBill = ({ wrd, calFunds }) => {
-	return <h3 onClick={() => calFunds('other')}>{wrd}</h3>;
+	const [wrongTimes, setWrongTimes] = useState(0);
+	const [display, setDisplay] = useState(true);
+
+	const handleClick = () => {
+		setWrongTimes(wrongTimes + 1);
+		calFunds('other', wrd, wrongTimes);
+		setDisplay(false);
+	};
+	return (
+		<div>
+			{display ? (
+				<h3 onClick={() => handleClick()}>
+					{wrd}, {wrongTimes}
+				</h3>
+			) : null}
+		</div>
+	);
 };
 
 export default OtherBill;

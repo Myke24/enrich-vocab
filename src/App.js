@@ -9,6 +9,7 @@ function App() {
 	const [synonyms, setSynonyms] = useState(null);
 	const [antonyms, setAntonyms] = useState(null);
 	const [funds, setFunds] = useState(0);
+	const [userAnswers, setUserAnswers] = useState([]);
 
 	useEffect(() => {
 		const randomWrd = () => words[Math.floor(Math.random() * words.length)];
@@ -27,13 +28,16 @@ function App() {
 			.catch(console.error);
 	}, []);
 
-	const calFunds = (calculate) => {
+	const calFunds = (calculate, word, wrongTimes) => {
 		if (calculate === 'correct') {
 			setFunds(funds + 100);
+			setUserAnswers({ ...userAnswers, [word]: wrongTimes });
 		} else if (calculate === 'wrong') {
 			setFunds(funds - 100);
+			setUserAnswers({ ...userAnswers, [word]: wrongTimes });
 		} else {
 			setFunds(funds - 50);
+			setUserAnswers({ ...userAnswers, [word]: wrongTimes });
 		}
 	};
 
