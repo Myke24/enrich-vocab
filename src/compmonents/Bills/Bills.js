@@ -17,18 +17,26 @@ const Bills = ({ syns, ants, otherWrds, mainWord, calFunds }) => {
 						/>
 				  ))
 				: null}
-			{/* {ants
+			{ants
 				? ants.map((ant) => (
-						<WrongBill ant={ant} key={ant} calFunds={calFunds} />
+						<WrongBill
+							ant={ant}
+							key={`${ant}${num++}`}
+							calFunds={calFunds}
+							isDisplayed={true}
+						/>
 				  ))
 				: null}
-			{otherWrds.map((wrd) => {
-				if (wrd !== mainWord) {
-					return <OtherBill wrd={wrd} key={wrd} calFunds={calFunds} />;
-				} else {
-					return null;
-				}
-			})} */}
+			{otherWrds
+				? otherWrds.map((wrd) => (
+						<OtherBill
+							wrd={wrd}
+							key={`${wrd}${num++}`}
+							calFunds={calFunds}
+							isDisplayed={true}
+						/>
+				  ))
+				: null}
 		</div>
 	);
 };

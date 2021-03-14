@@ -11,8 +11,10 @@ function App() {
 	const [funds, setFunds] = useState(0);
 	const [userAnswers, setUserAnswers] = useState([]);
 	const [hasStarted, setHasStarted] = useState(false);
-	const [generateSyns, setGeneratSyns] = useState(null);
+	const [generateWrds, setGeneratWrds] = useState(null);
 	const [displayingSyns, setDisplayingSyns] = useState([]);
+	const [displayingAnts, setDisplayingAnts] = useState([]);
+	const [displayingWrds, setDisplayingWrds] = useState([]);
 
 	//-----------------------------SETUP------------------------------------
 	const fetchWords = () => {
@@ -71,27 +73,70 @@ function App() {
 		}
 	};
 
-	const getRandWrds = (wrds) => {
-		setDisplayingSyns(null);
-		let randomWrds = [];
-		let wrdsLength = wrds.length;
-		randomWrds.push(wrds[Math.floor(Math.random() * wrdsLength)]);
-		randomWrds.push(wrds[Math.floor(Math.random() * wrdsLength)]);
-		randomWrds.push(wrds[Math.floor(Math.random() * wrdsLength)]);
-		setDisplayingSyns(randomWrds);
+	const getRandWrds = (syns, ants, wrds) => {
+		setDisplayingSyns([]);
+		console.log('displaying syns ' + displayingSyns);
+		let randomSyns = [];
+		let synsLength = syns.length;
+		randomSyns.push(syns[Math.floor(Math.random() * synsLength)]);
+		randomSyns.push(syns[Math.floor(Math.random() * synsLength)]);
+		randomSyns.push(syns[Math.floor(Math.random() * synsLength)]);
+		setDisplayingSyns(randomSyns);
+		console.log('displaying syns ' + displayingSyns);
+		setAntonyms([]);
+		if (ants) {
+			console.log('ants is defined');
+			console.log(ants.length);
+			let randomAnts = [];
+			let antsLength = ants.length;
+			for (let x = 0; x < 3; x++) {
+				if (ants[x] !== undefined) {
+					randomAnts.push(ants[Math.floor(Math.random() * antsLength)]);
+				}
+			}
+			setDisplayingAnts(randomAnts);
+			console.log(randomAnts);
+			console.log(
+				'after set display ants before diplay words if ants is defined'
+			);
+			setDisplayingWrds([]);
+			let remaining = 10 - (randomAnts.length + randomSyns.length);
+			console.log(remaining);
+			let randomWrds = [];
+			let wrdsLength = wrds.length;
+			console.log(wrds.length);
+			for (let x = 0; x < remaining; x++) {
+				randomWrds.push(wrds[Math.floor(Math.random() * wrdsLength)]);
+			}
+			console.log(randomWrds);
+			setDisplayingWrds(randomWrds);
+		} else {
+			console.log('ants is not defined');
+			setDisplayingWrds([]);
+			let remaining = 10 - randomSyns.length;
+			let randomWrds = [];
+			let wrdsLength = wrds.length;
+			for (let x = 0; x < remaining; x++) {
+				randomWrds.push(wrds[Math.floor(Math.random() * wrdsLength)]);
+			}
+			console.log(remaining);
+			setDisplayingWrds(randomWrds);
+			console.log(randomWrds);
+		}
 	};
 
 	const startGame = () => {
 		setHasStarted(true);
-		setGeneratSyns(
+		let randInterval = Math.floor(Math.random() * (3000 - 1000 + 1)) + 1000;
+		setGeneratWrds(
 			setInterval(() => {
-				getRandWrds(synonyms);
-			}, 2000)
+				getRandWrds(synonyms, antonyms, words);
+			}, randInterval)
 		);
 	};
 	const stopGame = () => {
 		setHasStarted(false);
-		clearInterval(generateSyns);
+		clearInterval(generateWrds);
 	};
 
 	//--------------------------------RENDERING-----------------------------------|
@@ -111,8 +156,8 @@ function App() {
 					synonyms ? (
 						<Bills
 							syns={displayingSyns}
-							ants={antonyms}
-							otherWrds={words}
+							ants={displayingAnts}
+							otherWrds={displayingWrds}
 							mainWord={mainWord[0].meta.id}
 							calFunds={calFunds}
 						/>
