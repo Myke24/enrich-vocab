@@ -1,27 +1,20 @@
 import React, { useState } from 'react';
+import './CorrectBill.css';
 
 const CorrectBill = ({ syn, calFunds, isDisplayed }) => {
-	const [wrongTimes, setWrongTimes] = useState(0);
 	const [display, setDisplay] = useState(isDisplayed);
 
 	const handleClick = () => {
-		setWrongTimes(wrongTimes - 1);
-		calFunds('correct', syn, wrongTimes);
+		calFunds('correct', syn);
 		setDisplay(false);
 	};
 
 	return (
-		<div>
+		<div className='bill' onClick={() => handleClick()}>
 			{display ? (
-				<h3 onClick={() => handleClick()} style={{ color: 'green' }}>
-					{syn}, {wrongTimes}
-				</h3>
+				<h3 style={{ color: 'green' }}>{syn}</h3>
 			) : (
-				<h3
-					onClick={() => handleClick()}
-					style={{ color: 'green', display: 'none' }}>
-					{syn}, {wrongTimes}
-				</h3>
+				<h3 style={{ color: 'green', display: 'none' }}>{syn}</h3>
 			)}
 		</div>
 	);

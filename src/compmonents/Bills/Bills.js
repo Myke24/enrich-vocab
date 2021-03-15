@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import CorrectBill from '../CorrectBill/CorrectBill';
 import WrongBill from '../WrongBill/WrongBill';
 import OtherBill from '../OtherBill/OtherBill';
+import './Bills.css';
 
 const Bills = ({ syns, ants, otherWrds, mainWord, calFunds }) => {
 	let num = 1;
 	return (
-		<div>
+		<div className='billsZone'>
 			{syns
 				? syns.map((syn) => (
 						<CorrectBill

@@ -1,9 +1,10 @@
 import React from 'react';
+import './Funds.css';
 
 const Funds = ({ funds }) => {
 	return (
-		<div>
-			<h1>Funds</h1>
+		<div className='funds'>
+			<h2>Funds</h2>
 			<p>${funds}</p>
 		</div>
 	);

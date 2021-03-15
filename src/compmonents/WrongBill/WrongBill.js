@@ -1,26 +1,22 @@
 import React, { useState } from 'react';
+import './WrongBill.css';
 
 const WrongBill = ({ ant, calFunds, isDisplayed }) => {
-	const [wrongTimes, setWrongTimes] = useState(0);
 	const [display, setDisplay] = useState(isDisplayed);
 
-	const handleClick = () => {
-		setWrongTimes(wrongTimes + 1);
-		calFunds('wrong', ant, wrongTimes);
+	const handleClick = (ant) => {
+		calFunds('wrong', ant);
 		setDisplay(false);
 	};
 	return (
-		<div>
+		<div className='bill' onClick={() => handleClick(ant)}>
 			{display ? (
-				<h3 id={ant} onClick={() => handleClick()} style={{ color: 'red' }}>
-					{ant}, {wrongTimes}
+				<h3 id={ant} style={{ color: 'red' }}>
+					{ant}
 				</h3>
 			) : (
-				<h3
-					id={ant}
-					onClick={() => handleClick()}
-					style={{ color: 'red', display: 'none' }}>
-					{ant}, {wrongTimes}
+				<h3 id={ant} style={{ color: 'red', display: 'none' }}>
+					{ant}
 				</h3>
 			)}
 		</div>

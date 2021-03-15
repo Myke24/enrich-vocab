@@ -1,0 +1,38 @@
+header {
+    background: white;
+    display:flex;
+    padding: 1% 0;
+    height:10vh;
+}
+
+
+.greetingNTimer {
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.greetingNTimer > h1 {
+    font-size: 3vh;
+}
+.greetingNTimer > * {
+    margin:auto;
+}
+
+.mainWord {
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 33%;
+}
+
+.mainWord > h1 {
+    font-size: 3vh;
+}
+.mainWord > h3 {
+    font-size: 2vh;
+    margin:auto;
+}
+.mainWord > * {
+    margin: auto;
+}

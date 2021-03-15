@@ -1,0 +1,8 @@
+.funds {
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.funds > * {
+    font-size: 2rem;
+}

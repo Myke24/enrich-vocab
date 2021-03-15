@@ -1,0 +1,13 @@
+.billsZone {
+    background: white;
+    display:grid;
+    grid-template-columns: 18% 18% 18% 18% 18%;
+    grid-template-rows: 20% 20% 20% 20%;
+    grid-gap: 1%;
+    justify-content: center;
+    align-content: center;
+    width:60%;
+    height:80vh;
+    margin:1% auto;
+    border-radius: 10%;
+}
