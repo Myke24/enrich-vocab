@@ -4,8 +4,9 @@ import WrongBill from '../WrongBill/WrongBill';
 import OtherBill from '../OtherBill/OtherBill';
 import './Bills.css';
 
-const Bills = ({ syns, ants, otherWrds, mainWord, calFunds }) => {
+const Bills = ({ syns, ants, otherWrds, mainWord, calFunds, funds }) => {
 	let num = 1;
+
 	return (
 		<div className='billsZone'>
 			{syns
@@ -15,6 +16,7 @@ const Bills = ({ syns, ants, otherWrds, mainWord, calFunds }) => {
 							key={`${syn}${num++}`}
 							calFunds={calFunds}
 							isDisplayed={true}
+							ele={`${syn}${num++}`}
 						/>
 				  ))
 				: null}
@@ -25,18 +27,22 @@ const Bills = ({ syns, ants, otherWrds, mainWord, calFunds }) => {
 							key={`${ant}${num++}`}
 							calFunds={calFunds}
 							isDisplayed={true}
+							ele={`${ant}${num++}`}
 						/>
 				  ))
 				: null}
 			{otherWrds
-				? otherWrds.map((wrd) => (
-						<OtherBill
-							wrd={wrd}
-							key={`${wrd}${num++}`}
-							calFunds={calFunds}
-							isDisplayed={true}
-						/>
-				  ))
+				? otherWrds
+						.filter((wrd) => wrd !== mainWord)
+						.map((wrd) => (
+							<OtherBill
+								wrd={wrd}
+								key={`${wrd}${num++}`}
+								calFunds={calFunds}
+								isDisplayed={true}
+								ele={`${wrd}${num++}`}
+							/>
+						))
 				: null}
 		</div>
 	);

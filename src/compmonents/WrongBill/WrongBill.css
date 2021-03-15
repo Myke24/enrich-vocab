@@ -1,5 +1,34 @@
-.bill .wrong{
+.bill{
     background: #85bb65;
     width:100%;
     height:100%;
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+}
+
+.firstc {
+    grid-column: 1 / span 2;
+    justify-self: start;
+color:grey;
+}
+.secondc {
+    grid-column: 3 / span 2;
+    justify-self: end;
+color:grey;
+}
+.word {
+    grid-column: 1 / span 4;
+    justify-self: center;
+    color:black;
+}
+.thirdc {
+    grid-column: 1 / span 2;
+    justify-self: start;
+color:grey;
+}
+.fourthc {
+    grid-column: 3 / span 2;
+    justify-self: end;
+color:grey;
 }

@@ -27,7 +27,7 @@ const LostZone = ({ userAnswers, startGame }) => {
 	return (
 		<div>
 			<button onClick={() => startGame()}> Play Again?</button>
-			<div>{ansArr}</div>
+			<div style={{ color: 'white' }}>{ansArr}</div>
 		</div>
 	);
 };

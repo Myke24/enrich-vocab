@@ -3,7 +3,7 @@ import './App.css';
 import words from './words.json';
 import Header from './compmonents/Header/Header';
 import Bills from './compmonents/Bills/Bills';
-import LostZone from './compmonents/LostZone/LostZone';
+import Results from './compmonents/Results/Results';
 
 function App() {
 	const [mainWord, setMainWord] = useState('');
@@ -36,6 +36,7 @@ function App() {
 			})
 			.catch(console.error);
 
+		//make sure that the word has at least 3 synonyms and the word is actually in the collegiate thesaurus
 		if (
 			synonyms === undefined ||
 			synonyms.length < 3 ||
@@ -85,6 +86,7 @@ function App() {
 		}
 	};
 
+	//takes in 3 arrays of words(strings) and picks 20 random words, === 3 syns, up to 3 ants if the main word has any and the rest of the 20 words gets filled with random words from the words json list
 	const getRandWrds = (syns, ants, wrds) => {
 		setDisplayingSyns([]);
 		let randomSyns = [];
@@ -116,7 +118,7 @@ function App() {
 			setDisplayingWrds([]);
 			let randomWrds = [];
 			let wrdsLength = wrds.length;
-			for (let x = 0; x < 17; x++) {
+			for (let x = 1; x < 17; x++) {
 				randomWrds.push(wrds[Math.floor(Math.random() * wrdsLength)]);
 			}
 			setDisplayingWrds(randomWrds);
@@ -131,7 +133,7 @@ function App() {
 			setFunds(300);
 		}
 		//``````````````````TODO``````````````````````````````````````````|
-		//---------------I can start the timer here-----------------------
+		//---------------Create Timer here???????-----------------------
 		let randInterval = Math.floor(Math.random() * (3000 - 2000 + 1)) + 1000;
 		setGeneratWrds(
 			setInterval(() => {
@@ -155,7 +157,7 @@ function App() {
 	return (
 		<div className='App'>
 			{hasLost ? (
-				<LostZone userAnswers={userAnswers} startGame={startGame} />
+				<Results userAnswers={userAnswers} startGame={startGame} />
 			) : (
 				<>
 					<Header
@@ -173,6 +175,7 @@ function App() {
 									otherWrds={displayingWrds}
 									mainWord={mainWord[0].meta.id}
 									calFunds={calFunds}
+									funds={funds}
 								/>
 							) : (
 								<h1>No Synonyms</h1>
