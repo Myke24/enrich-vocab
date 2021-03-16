@@ -13,6 +13,7 @@
 
 - HTML, CSS and Javascript
 - ReactJS
+- Merriam Webster Thesaurus API
 - gh-pages
 
 ## Getting Started/Installation Instructions
