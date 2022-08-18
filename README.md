@@ -18,7 +18,6 @@
 
 ## Getting Started/Installation Instructions
 - Just go the the website and enjoy
-- https://enrich-vocab.com/
 
 ##  Contribution Guidelines
 - I know that the game still needs a lot of work, especially styling. So if you want to contribute, identify bugs or propose improvements, just email me @ mykiel.d.horn24@gmail.com. All will be appreciated.
